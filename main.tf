@@ -33,6 +33,6 @@ resource "aws_lb_listener" "ALBLSNR" {
 
 resource "aws_lb_target_group_attachment" "webserver-alb" {
   target_group_arn = "arn:aws:elasticloadbalancing:us-east-1:238393102293:targetgroup/ALB-tg20230424064929632600000001/2069cce7616e00e0"
-  target_id        = aws_instance.webserver-tg
+  target_id        = aws_instance.webserver_tg
   port             = 80
 }
