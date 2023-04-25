@@ -28,12 +28,12 @@ resource "aws_lb_target_group" "example" {
 }
 
 resource "aws_lb_listener" "ALBLSNR" {
-  load_balancer_arn = "arn:aws:elasticloadbalancing:us-east-1:238393102293:loadbalancer/app/ALB-lb/974d58b4544e39e9"
+  load_balancer_arn = "arn:aws:elasticloadbalancing:us-east-1:238393102293:loadbalancer/app/ALB-lb/2c315b23d48d0bb7"
   port              = "80"
   protocol          = "HTTP"
 
   default_action {
     type             = "forward"
-    target_group_arn = "arn:aws:elasticloadbalancing:us-east-1:238393102293:targetgroup/ALB-tg20230424064929632600000001/2069cce7616e00e0"
+    target_group_arn = "arn:aws:elasticloadbalancing:us-east-1:238393102293:targetgroup/example-target-group/cbd18bd63649cd57"
   }
 }
