@@ -32,7 +32,7 @@ resource "aws_lb_listener" "ALBLSNR" {
 }
 
 resource "aws_lb_target_group_attachment" "test" {
-  target_group_arn = aws_lb_target_group.test.arn
+  target_group_arn = "arn:aws:elasticloadbalancing:us-east-1:238393102293:targetgroup/ALB-tg20230424064929632600000001/2069cce7616e00e0"
   target_id        = aws_instance.test.id
   port             = 80
 }
