@@ -10,13 +10,20 @@ resource "aws_lb" "ALB" {
   security_groups    = ["sg-0c081e572fcbb6b95"]
 }
 
-resource "aws_lb_target_group" "ALBTG" {
-  name_prefix        = "ALB-tg"
-  port               = 80
-  protocol           = "HTTP"
-  vpc_id             = "vpc-08fd6d9e9b79fc0c9"
+resource "aws_lb_target_group" "example" {
+  name        = "example-target-group"
+  port        = 80
+  protocol    = "HTTP"
+  vpc_id      = "vpc-08fd6d9e9b79fc0c9"
+  
   health_check {
-    path = "/"
+    interval            = 30
+    path                = "/"
+    port                = "80"
+    protocol            = "HTTP"
+    timeout             = 5
+    healthy_threshold   = 2
+    unhealthy_threshold = 2
   }
 }
 
@@ -31,8 +38,8 @@ resource "aws_lb_listener" "ALBLSNR" {
   }
 }
 
-resource "aws_lb_target_group_attachment" "test" {
+resource "aws_lb_target_group_attachment" "example" {
   target_group_arn = "arn:aws:elasticloadbalancing:us-east-1:238393102293:targetgroup/ALB-tg20230424064929632600000001/2069cce7616e00e0"
-  target_id        = aws_instance.test.id
+  target_id        = aws_instance.example.id
   port             = 80
 }
