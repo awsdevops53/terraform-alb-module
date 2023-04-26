@@ -14,7 +14,7 @@ resource "aws_lb_target_group" "alb-example" {
   name        = "tf-example-lb-alb-tg"
   target_type = "alb"
   port        = 80
-  protocol    = "HTTP"
+  protocol    = "TCP"
   vpc_id      = "vpc-08fd6d9e9b79fc0c9"
 }
 
