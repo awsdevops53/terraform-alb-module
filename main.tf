@@ -37,3 +37,9 @@ resource "aws_lb_listener" "ALBLSNR" {
     target_group_arn = "arn:aws:elasticloadbalancing:us-east-1:238393102293:targetgroup/example-target-group/cbd18bd63649cd57"
   }
 }
+
+resource "aws_lb_target_group_attachment" "tg_attachment_test1" {
+    target_group_arn = "arn:aws:elasticloadbalancing:us-east-1:238393102293:targetgroup/example-target-group/cbd18bd63649cd57"
+    target_id        = "i-0ebaaaaa855b" 
+    port             = 80
+}
