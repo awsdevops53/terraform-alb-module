@@ -10,21 +10,12 @@ resource "aws_lb" "ALB" {
   security_groups    = ["sg-0c081e572fcbb6b95"]
 }
 
-resource "aws_lb_target_group" "example" {
-  name        = "example-target-group"
+resource "aws_lb_target_group" "alb-example" {
+  name        = "tf-example-lb-alb-tg"
+  target_type = "alb"
   port        = 80
-  protocol    = "HTTP"
+  protocol    = "TCP"
   vpc_id      = "vpc-08fd6d9e9b79fc0c9"
-  
-  health_check {
-    interval            = 30
-    path                = "/"
-    port                = "80"
-    protocol            = "HTTP"
-    timeout             = 5
-    healthy_threshold   = 2
-    unhealthy_threshold = 2
-  }
 }
 
 resource "aws_lb_listener" "ALBLSNR" {
