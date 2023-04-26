@@ -17,3 +17,20 @@ resource "aws_lb_target_group" "alb-example" {
   protocol    = "TCP"
   vpc_id      = "vpc-08fd6d9e9b79fc0c9"
 }
+
+resource "aws_lb_listener" "ALBLSNR" {
+  load_balancer_arn = "arn:aws:elasticloadbalancing:us-east-1:238393102293:loadbalancer/app/ALB-lb/1c4db46f2f8dc5ab"
+  port              = "80"
+  protocol          = "HTTP"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = "arn:aws:elasticloadbalancing:us-east-1:238393102293:targetgroup/tf-example-lb-alb-tg/d0f9bbe3ab5a0a56"
+  }
+}
+
+resource "aws_lb_target_group_attachment" "tg_attachment_test1" {
+    target_group_arn = "arn:aws:elasticloadbalancing:us-east-1:238393102293:targetgroup/tf-example-lb-alb-tg/d0f9bbe3ab5a0a56"
+    target_id        = "i-0b7120b20f0e8990f, i-0b73c6d866fe1dd5a" 
+    port             = 80
+}
