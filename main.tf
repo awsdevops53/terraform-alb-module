@@ -13,7 +13,7 @@ resource "aws_lb" "ALB" {
 resource "aws_lb_target_group" "example" {
   name        = "alb-target-group"
   port        = 80
-  protocol    = "HTTP"
+  protocol    = "TCP"
   vpc_id      = "vpc-08fd6d9e9b79fc0c9"
   
   health_check {
