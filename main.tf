@@ -6,7 +6,7 @@ resource "aws_lb" "ALB" {
   name               = "ALB-lb"
   internal           = false
   load_balancer_type = "application"
-  subnets            = ["subnet-0b7417c037d3b736f", "subnet-08379ffadd1a6be7e"]
+  subnets            = ["subnet-0b7417c037d3b736f", "subnet-075e1d443a1a2ae25"]
   security_groups    = ["sg-0c081e572fcbb6b95"]
 }
 
