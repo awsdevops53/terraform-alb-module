@@ -32,7 +32,7 @@ resource "aws_lb_listener" "ALB-LSNR" {
 }
 
 resource "aws_lb_target_group_attachment" "my_attachment" {
-  target_group_arn = aws_lb_target_group.my_target_group.arn
+  target_group_arn = "arn:aws:elasticloadbalancing:us-east-1:238393102293:targetgroup/alb-tg/c825aaad54d10fdf"
   target_id        = "172.31.53.139, 172.31.91.234"
   port             = 80
 }
