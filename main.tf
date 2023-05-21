@@ -40,6 +40,6 @@ resource "aws_lb_listener" "ALB-LSNR" {
 
 resource "aws_lb_target_group_attachment" "tg_attachment_test1" {
     target_group_arn = "arn:aws:elasticloadbalancing:us-east-1:238393102293:targetgroup/alb-target-group/f4d6c2d18b77662f"
-    target_id        = "i-0b7120b20f0e8990f, i-0b73c6d866fe1dd5a" 
+    target_id        = "i-000852422c66c4782, i-0c71a23a8eb7b528a" 
     port             = 80
 }
