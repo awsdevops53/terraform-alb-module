@@ -3,29 +3,22 @@ provider "aws" {
 }
 
 resource "aws_lb" "ALB" {
-  name               = "ALB-lb"
-  internal           = false
-  load_balancer_type = "application"
-  subnets            = ["subnet-0b7417c037d3b736f", "subnet-075e1d443a1a2ae25"]
-  security_groups    = ["sg-0c081e572fcbb6b95"]
-}
+  name                     = "alb-rana"
+  load_balancer_type       = "application"
+  subnets                  = ["subnet-0b7417c037d3b736f","subnet-075e1d443a1a2ae25"]
+  security_groups          = ["sg-0c081e572fcbb6b95"]
+ }
 
-resource "aws_lb_target_group" "example" {
-  name        = "alb-target-group"
-  port        = 80
-  protocol    = "TCP"
-  vpc_id      = "vpc-08fd6d9e9b79fc0c9"
-  
-  health_check {
-    interval            = 30
-    path                = "/"
-    port                = "80"
-    protocol            = "HTTP"
-    timeout             = 5
-    healthy_threshold   = 2
-    unhealthy_threshold = 2
-  }
-}
+resource "aws_lb_target_group" "targetgroup1"  {
+     name                  = "alb-tg"
+      protocol             = "HTTP"
+      target_type          = "ip"
+      port                 = "80"
+      vpc_id               = "vpc-08fd6d9e9b79fc0c9"
+      health_check{
+        path                 = "/"
+      }
+ }
 
 resource "aws_lb_listener" "ALB-LSNR" {
   load_balancer_arn = "arn:aws:elasticloadbalancing:us-east-1:238393102293:loadbalancer/app/ALB-lb/d820158ed819f7cd"
