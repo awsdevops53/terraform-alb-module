@@ -28,18 +28,18 @@ resource "aws_lb_target_group" "example" {
 }
 
 resource "aws_lb_listener" "ALB-LSNR" {
-  load_balancer_arn = "arn:aws:elasticloadbalancing:us-east-1:238393102293:loadbalancer/app/ALB-lb/1c4db46f2f8dc5ab"
+  load_balancer_arn = "arn:aws:elasticloadbalancing:us-east-1:238393102293:loadbalancer/app/ALB-lb/d820158ed819f7cd"
   port              = "80"
   protocol          = "HTTP"
 
   default_action {
     type             = "forward"
-    target_group_arn = "arn:aws:elasticloadbalancing:us-east-1:238393102293:targetgroup/tf-example-lb-alb-tg/73bcbee3c1abc7c4"
+    target_group_arn = "arn:aws:elasticloadbalancing:us-east-1:238393102293:targetgroup/alb-target-group/f4d6c2d18b77662f"
   }
 }
 
 resource "aws_lb_target_group_attachment" "tg_attachment_test1" {
-    target_group_arn = "arn:aws:elasticloadbalancing:us-east-1:238393102293:targetgroup/tf-example-lb-alb-tg/73bcbee3c1abc7c4"
+    target_group_arn = "arn:aws:elasticloadbalancing:us-east-1:238393102293:targetgroup/alb-target-group/f4d6c2d18b77662f"
     target_id        = "i-0b7120b20f0e8990f, i-0b73c6d866fe1dd5a" 
     port             = 80
 }
